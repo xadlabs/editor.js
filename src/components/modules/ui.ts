@@ -49,7 +49,7 @@ export default class UI extends Module<UINodes> {
   public get CSS(): {
     editorWrapper: string; editorWrapperNarrow: string; editorZone: string; editorZoneHidden: string;
     editorEmpty: string; editorRtlFix: string;
-    } {
+  } {
     return {
       editorWrapper: 'codex-editor',
       editorWrapperNarrow: 'codex-editor--narrow',
@@ -110,7 +110,7 @@ export default class UI extends Module<UINodes> {
    */
   private resizeDebouncer: () => void = _.debounce(() => {
     this.windowResize();
-  // eslint-disable-next-line @typescript-eslint/no-magic-numbers
+    // eslint-disable-next-line @typescript-eslint/no-magic-numbers
   }, 200);
 
   /**
@@ -255,7 +255,7 @@ export default class UI extends Module<UINodes> {
      */
     this.nodes.wrapper = $.make('div', [
       this.CSS.editorWrapper,
-      ...(this.isRtl ? [ this.CSS.editorRtlFix ] : []),
+      ...(this.isRtl ? [this.CSS.editorRtlFix] : []),
     ]);
     this.nodes.redactor = $.make('div', this.CSS.editorZone);
 
@@ -274,7 +274,15 @@ export default class UI extends Module<UINodes> {
     this.nodes.redactor.style.paddingBottom = this.config.minHeight + 'px';
 
     this.nodes.wrapper.appendChild(this.nodes.redactor);
-    this.nodes.holder.appendChild(this.nodes.wrapper);
+
+    const numChildren = this.nodes.holder.children.length;
+
+    /**
+     * If there are no children in holder, append Editor.js to the end
+     */
+    if (numChildren === 0) {
+      this.nodes.holder.appendChild(this.nodes.wrapper);
+    }
   }
 
   /**
@@ -401,7 +409,7 @@ export default class UI extends Module<UINodes> {
       this.eventsDispatcher.emit(BlockHovered, {
         block: this.Editor.BlockManager.getBlockByChildNode(hoveredBlock),
       });
-    // eslint-disable-next-line @typescript-eslint/no-magic-numbers
+      // eslint-disable-next-line @typescript-eslint/no-magic-numbers
     }, 20), {
       passive: true,
     });

@@ -41,12 +41,12 @@ export default class EditorJS {
   /**
    * @param {EditorConfig|string|undefined} [configuration] - user configuration
    */
-  constructor(configuration?: EditorConfig|string) {
+  constructor(configuration?: EditorConfig | string) {
     /**
      * Set default onReady function
      */
     // eslint-disable-next-line @typescript-eslint/no-empty-function
-    let onReady = (): void => {};
+    let onReady = (): void => { };
 
     /**
      * If `onReady` was passed in `configuration` then redefine onReady function
@@ -81,7 +81,13 @@ export default class EditorJS {
    * @param {Core} editor — Editor's instance
    */
   public exportAPI(editor: Core): void {
-    const fieldsToExport = [ 'configuration' ];
+
+    // console.log('editor', editor)
+    // if (editor.moduleInstances === undefined) {
+    //   return;
+    // }
+
+    const fieldsToExport = ['configuration'];
     const destroy = (): void => {
       Object.values(editor.moduleInstances)
         .forEach((moduleInstance) => {

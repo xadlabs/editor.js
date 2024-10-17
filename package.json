@@ -1,6 +1,6 @@
 {
-  "name": "@editorjs/editorjs",
-  "version": "2.29.1",
+  "name": "zmeditorjsnew",
+  "version": "2.29.11",
   "description": "Editor.js — Native JS, based on API and Open Source",
   "main": "dist/editorjs.umd.js",
   "module": "dist/editorjs.mjs",
@@ -35,7 +35,7 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/codex-team/editor.js.git"
+    "url": "git+https://github.com/xadlabs/editor.js.git"
   },
   "devDependencies": {
     "@babel/register": "^7.21.0",
@@ -57,9 +57,6 @@
     "cypress-plugin-tab": "^1.0.5",
     "cypress-terminal-report": "^5.3.2",
     "eslint": "^8.37.0",
-    "eslint-config-codex": "^1.7.1",
-    "eslint-plugin-chai-friendly": "^0.7.2",
-    "eslint-plugin-cypress": "2.12.1",
     "html-janitor": "^2.0.4",
     "nanoid": "^4.0.2",
     "postcss-apply": "^0.12.0",
